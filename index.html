@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Трекер целей</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Страница авторизации -->
+    <div id="authPage" class="auth-page">
+      <h1>Авторизация</h1>
+      <input type="text" id="loginUsername" placeholder="Имя пользователя" required>
+      <input type="password" id="loginPassword" placeholder="Пароль" required>
+      <select id="loginRole" required>
+        <option value="" disabled selected>Выберите должность</option>
+        <option value="сержант">Сержант</option>
+        <option value="старший сержант">Старший сержант</option>
+        <option value="капитан">Капитан</option>
+        <option value="админ">Админ</option>
+      </select>
+      <button onclick="login()">Войти</button>
+      <div class="nav-buttons">
+        <button onclick="showRegisterPage()">Регистрация</button>
+      </div>
+    </div>
+
+    <!-- Страница регистрации -->
+    <div id="registerPage" class="register-page hidden">
+      <h1>Регистрация</h1>
+      <input type="text" id="regUsername" placeholder="Имя пользователя" required>
+      <input type="password" id="regPassword" placeholder="Пароль" required>
+      <select id="regRole" required>
+        <option value="" disabled selected>Выберите должность</option>
+        <option value="сержант">Сержант</option>
+        <option value="старший сержант">Старший сержант</option>
+        <option value="капитан">Капитан</option>
+        <option value="админ">Админ</option>
+      </select>
+      <button onclick="register()">Зарегистрироваться</button>
+      <div class="nav-buttons">
+        <button onclick="showAuthPage()">Назад к авторизации</button>
+      </div>
+    </div>
+
+    <!-- Основная страница -->
+    <div id="mainPage" class="main-page hidden">
+      <h1>Трекер целей</h1>
+      <input type="text" id="topicName" placeholder="Введите имя и фамилию" required>
+      <button onclick="createTopic()">Перейти к целям</button>
+      <button onclick="showShiftPage()">Отметить выход на смену</button>
+      <button onclick="showProfilePage(currentUser )">Профиль</button>
+    </div>
+
+    <!-- Страница целей -->
+    <div id="topicPage" class="topic-page hidden">
+      <h2 id="topicTitle"></h2>
+      <table class="goal-table">
+        <thead>
+          <tr>
+            <th>Цель</th>
+            <th>Описание</th>
+            <th>Прогресс</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody id="goalsList"></tbody>
+      </table>
+
+      <h2>Добавить новую цель</h2>
+      <input type="text" id="newGoal" placeholder="Новая цель" required>
+      <input type="text" id="goalDescription" placeholder="Описание цели">
+      <input type="number" id="newGoalProgress" placeholder="Процент выполнения (0-100)" min="0" max="100" required>
+      <button id="addGoalButton" onclick="addGoal()">Добавить цель</button>
+      <div class="nav-buttons">
+        <button onclick="showMainPage()">Вернуться в меню</button>
+      </div>
+    </div>
+
+    <!-- Страница отметки выхода на смену -->
+    <div id="shiftPage" class="shift-page hidden">
+      <h1>Отметка выхода на смену</h1>
+      <input type="text" id="shiftFIO" placeholder="ФИО" required>
+      <select id="shiftNumber" required>
+        <option value="" disabled selected>Выберите номер смены</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <div class="date-picker">
+        <label for="shiftDate">Дата:</label>
+        <input type="date" id="shiftDate" required>
+      </div>
+      <button onclick="saveShift()">Сохранить</button>
+      <button onclick="clearShiftData()">Очистить данные</button>
+      <button onclick="showMainPage()">Вернуться в меню</button>
+      <button onclick="exportShiftsToExcel()">Сохранить таблицу в Excel</button>
+
+      <table class="shift-table">
+        <thead>
+          <tr>
+            <th>ФИО</th>
+            <th>Номер смены</th>
+            <th>Дата</th>
+          </tr>
+        </thead>
+        <tbody id="shiftList"></tbody>
+      </table>
+    </div>
+
+    <!-- Страница отчета по сменам -->
+    <div id="shiftReportPage" class="shift-report-page hidden">
+      <h1>Отчет по сменам</h1>
+      <table class="shift-report-table">
+        <thead>
+          <tr>
+            <th>ФИО</th>
+            <th>Номер смены</th>
+            <th>Дата</th>
+          </tr>
+        </thead>
+        <tbody id="shiftReportList"></tbody>
+      </table>
+      <button onclick="exportToExcel()">Экспорт в Excel</button>
+      <div class="nav-buttons">
+        <button onclick="showMainPage()">На главную</button>
+      </div>
+    </div>
+
+    <!-- Страница профиля -->
+    <div id="profilePage" class="profile-page hidden">
+      <h1>Профиль пользователя</h1>
+      <p>Имя пользователя: <span id="profileUsername"></span></p>
+      <p>Должность: <span id="profileRole"></span></p>
+      <div class="nav-buttons">
+        <button onclick="promoteUser ()">Повысить звание</button>
+        <button onclick="demoteUser ()">Понизить звание</button>
+        <button onclick="showMainPage()">Вернуться в меню</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

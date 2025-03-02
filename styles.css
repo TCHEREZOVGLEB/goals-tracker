@@ -1,0 +1,129 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #80deea);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  #app {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #007bff;
+    margin: 20px 0;
+    font-size: 24px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #007bff;
+    margin: 15px 0;
+    font-size: 20px;
+  }
+  
+  input[type="text"], input[type="password"], input[type="number"], select {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 8px 0;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin: 8px 0;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .auth-page, .register-page, .main-page, .topic-page, .shift-page, .shift-report-page, .profile-page {
+    padding: 20px;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .nav-buttons button {
+    flex: 1;
+  }
+  
+  .goal-table, .shift-table, .shift-report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .goal-table th, .goal-table td, .shift-table th, .shift-table td, .shift-report-table th, .shift-report-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .goal-table th, .shift-table th, .shift-report-table th {
+    background-color: #f5f5f5;
+    font-weight: 500;
+  }
+  
+  .goal.completed {
+    background-color: #d4edda;
+    text-decoration: line-through;
+  }
+  
+  .goal-table button, .shift-table button {
+    padding: 8px 12px;
+    font-size: 14px;
+    margin: 0 4px;
+  }
+  
+  .goal-table button:hover, .shift-table button:hover {
+    background-color: #0056b3;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .date-picker {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+  }
+  
+  .date-picker label {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+  }
